@@ -1,0 +1,24 @@
+// detected hardware and boot messages
+[chlzhang@hk-bj-search001 ~]$ dmesg
+
+// read speed test
+[chlzhang@hk-bj-search001 ~]$ sudo hdparm -t --direct /dev/vdb1
+
+/dev/vdb1:
+ Timing O_DIRECT disk reads: 
+392 MB in  3.01 seconds = 130.03 MB/sec
+[chlzhang@hk-bj-search001 ~]$ 
+
+// write speed test
+[chlzhang@hk-bj-search001 ~]$ sync;/usr/bin/time -p bash -c "(dd if=/dev/zero of=test.dd  bs=1000K count=20000;sync)"
+
+记录了20000+0 的读入
+记录了20000+0 的写出
+20480000000字节(20 GB)已复制，327,79 秒，62,5 MB/秒
+real 363.15
+user 0.03
+sys 19.54
+
+[chlzhang@hk-bj-search001 ~]$ 
+
+// netcard speed test
